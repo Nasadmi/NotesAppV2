@@ -1,0 +1,21 @@
+CREATE DATABASE IF NOT EXISTS `notes_db`;
+
+USE `notes_db`;
+
+CREATE TABLE IF NOT EXISTS `users`
+(
+    id INT PRIMARY KEY AUTO_INCREMENT,
+    username VARCHAR(255) NOT NULL,
+    email VARCHAR(255) NOT NULL UNIQUE,
+    password VARCHAR(500) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS `notes`
+(
+    uuid CHAR(36) PRIMARY KEY DEFAULT(UUID()),
+    user_id INT,
+    title VARCHAR(255) NOT NULL,
+    content TEXT,
+    created_at TIMESTAMP DEFAULT(CURRENT_TIMESTAMP),
+    FOREIGN KEY (user_id) REFERENCES users(id)
+);
