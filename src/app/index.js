@@ -18,6 +18,8 @@ import { __dirname } from '../__dirname.js'
 
 import { db } from '../lib/db.js'
 
+import { indexRoutes } from '../router/index.routes.js'
+
 const app = express()
 
 config()
@@ -48,7 +50,19 @@ app.set('views', join(__dirname, 'views'))
 
 app.set('view engine', 'ejs')
 
-app.use('resources', express.static(join(__dirname, 'public')))
+app.use('/resources', express.static(join(__dirname, 'public')))
+
+app.use((req, res, next) => {
+  if (req.cookies.theme === undefined || (req.cookies.theme !== 'dark' && req.cookies.theme !== 'default')) {
+    res.cookie('theme', 'default', {
+      sameSite: 'none',
+      secure: true
+    })
+  }
+  next()
+})
+
+app.use(indexRoutes)
 
 app.set('port', process.env.PORT || 5000)
 
