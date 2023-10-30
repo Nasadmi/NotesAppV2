@@ -33,7 +33,6 @@ passport.serializeUser((user, done) => {
 })
 
 passport.deserializeUser((id, done) => {
-  console.log(id)
   db.query('SELECT * FROM users WHERE id = ?', [id], (error, result) => {
     if (error) {
       console.error(error)
