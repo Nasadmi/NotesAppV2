@@ -6,8 +6,6 @@ import cookieParser from 'cookie-parser'
 
 import cors from 'cors'
 
-import passport from 'passport'
-
 import morgan from 'morgan'
 
 import { join } from 'node:path'
@@ -19,6 +17,12 @@ import { __dirname } from '../__dirname.js'
 import { db } from '../lib/db.js'
 
 import { indexRoutes } from '../router/index.routes.js'
+
+import { apiRoutes } from '../router/api.routes.js'
+
+import { passport } from '../lib/passport-config.js'
+
+import { profileRoutes } from '../router/profile.routes.js'
 
 const app = express()
 
@@ -63,6 +67,10 @@ app.use((req, res, next) => {
 })
 
 app.use(indexRoutes)
+
+app.use(profileRoutes)
+
+app.use(apiRoutes)
 
 app.set('port', process.env.PORT || 5000)
 

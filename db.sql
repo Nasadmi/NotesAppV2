@@ -4,7 +4,7 @@ USE `notes_db`;
 
 CREATE TABLE IF NOT EXISTS `users`
 (
-    id INT PRIMARY KEY AUTO_INCREMENT,
+    id CHAR(36) PRIMARY KEY DEFAULT(UUID()),
     username VARCHAR(255) NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     password VARCHAR(500) NOT NULL
@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `users`
 CREATE TABLE IF NOT EXISTS `notes`
 (
     uuid CHAR(36) PRIMARY KEY DEFAULT(UUID()),
-    user_id INT,
+    user_id CHAR(36),
     title VARCHAR(255) NOT NULL,
     content TEXT,
     created_at TIMESTAMP DEFAULT(CURRENT_TIMESTAMP),

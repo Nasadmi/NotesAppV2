@@ -1,0 +1,105 @@
+main.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 30px auto 0;
+  padding: 20px 0;
+  background-color: var(--color-2);
+  width: 45%;
+  box-shadow: 0 0 20px var(--color-3);
+  border-radius: 12px;
+}
+
+main.form h1 {
+  color: var(--color-4);
+  font-size: 3em;
+  border-bottom: 2px solid var(--color-1);
+  margin-bottom: 15px;
+  padding: 2px 5px;
+}
+
+main.form label {
+  margin: 5px 0;
+}
+
+main.form label h2 {
+  color: var(--color-4);
+  transition: all 250ms ease;
+}
+
+main.form label h2.focus {
+  color: var(--color-3);
+}
+
+main.form label input {
+  background-color: var(--color-1);
+  width: 350px;
+  color: var(--color-4);
+  font-family: 'Montserrat', sans-serif;
+  border: none;
+  padding: 5px 10px;
+  border-radius: 12px;
+  font-size: 1.15em;
+  margin-top: 10px;
+  font-weight: 700;
+  outline: none;
+}
+
+main.form label input::placeholder {
+  font-weight: 400;
+}
+
+main.form .buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+main.form .buttons .btn-register {
+  background-color: var(--color-4);
+  width: 25%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px 4px;
+  color: var(--color-1);
+  border-radius: 12px;
+  border: none;
+  font-size: 1.75em;
+  cursor: pointer;
+  transition: all 250ms ease;
+  margin-top: 10px;
+}
+
+main.form .buttons .btn-register:hover {
+  color: var(--color-4);
+  background-color: var(--color-1);
+}
+
+main.form .buttons .hyper-link-other {
+  color: var(--color-4);
+  font-weight: 700;
+  margin-top: 10px;
+  position: relative;
+  padding: 5px 10px;
+  display: block;
+}
+
+main.form .buttons .hyper-link-other::before {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  z-index: 1;
+  background-color: var(--color-3);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: all 450ms ease-in-out;
+}
+
+main.form .buttons .hyper-link-other:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
