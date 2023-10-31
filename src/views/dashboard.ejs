@@ -1,3 +1,74 @@
-<h1><%= user.username %></h1>
-<h2><%= user.email %></h2>
-<%= user.id %>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= title %>
+  </title>
+  <%- include('partials/head') %>
+    <link rel="stylesheet" href="/resources/css/dashboard.css">
+</head>
+
+<body>
+  <div class="container">
+    <nav class="user-data">
+      <h2 id="title-user-data">Welcome: <%= user.username %>
+      </h2>
+      <ul class="nav-menu">
+        <li>
+          <a href="/dashboard/settings">Settings</a>
+        </li>
+        <li>
+          <button class="change-theme-btn" id="changeThemeAction">
+            <ion-icon name="contrast-outline"></ion-icon>
+          </button>
+        </li>
+        <li>
+          <button class="change-theme-btn" id="logOutAction">
+            <ion-icon name="log-out-outline"></ion-icon>
+          </button>
+        </li>
+      </ul>
+    </nav>
+    <div class="center">
+      <button class="btn-add" id="addNoteAction">
+        <ion-icon name="add-circle-outline"></ion-icon>
+      </button>
+    </div>
+    <main class="notes-content">
+      <% if(notes.length <=0) { %>
+        <span></span>
+        <h1 class="no-notes-title">You doesn't have notes</h1>
+        <% } else { %>
+          <% for(let i=0; i < notes.length; i++) { %>
+            <article class="note">
+              <button class="btn-note delete" data-uuid-note="<%= notes[i].uuid %>">
+                <ion-icon name="trash-outline"></ion-icon>
+              </button>
+              <a href="/notes/edit/<%= notes[i].uuid %>" class="btn-note edit">
+                <ion-icon name="create-outline"></ion-icon>
+              </a>
+              <h2>
+                <%= notes[i].title %>
+              </h2>
+              <span class="time">
+                <%= notes[i].created_at %>
+              </span>
+              <% if(notes[i].content !== null) { %>
+                <p>
+                  <%= notes[i].content %>
+                </p>
+                <% } %>
+            </article>
+            <% } %>
+              <% } %>
+    </main>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="/resources/js/dashboard-actions.js"></script>
+  <%- include('partials/scripts') %>
+</body>
+
+</html>

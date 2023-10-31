@@ -11,13 +11,13 @@ passport.use(new Strategy(async (email, password, done) => {
     if (error) {
       console.error(error)
     } else {
-      if (result[0] === undefined) {
+      if (result[0].id === undefined) {
         return done(null, false, {
           message: 'User doesnt exists'
         })
       }
 
-      if (!(await compare(result[0].password, password))) {
+      if (!(await compare(password, result[0].password))) {
         return done(null, false, {
           message: 'Wrong password'
         })

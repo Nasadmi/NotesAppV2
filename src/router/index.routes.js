@@ -16,4 +16,11 @@ router.get('/register', (req, res) => {
   })
 })
 
+router.get('/login', (req, res) => {
+  res.render('login', {
+    title: 'NotesApp',
+    theme: req.cookies.theme
+  })
+})
+
 export { router as indexRoutes }

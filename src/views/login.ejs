@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>
+    <%= title %>
+  </title>
+  <%- include('partials/head') %>
+  <link rel="stylesheet" href="/resources/css/register.css">
+</head>
+
+<body>
+  <div class="container">
+    <%- include('partials/navBar') %>
+      <main class="form">
+        <h1>Login</h1>
+        <label for="email">
+          <h2>Email</h2>
+          <input type="email" name="email" id="email" placeholder="Email" spellcheck="false" autocomplete="on">
+        </label>
+        <label for="password">
+          <h2>Password</h2>
+          <input type="password" name="password" id="password" placeholder="Password" spellcheck="false" autocomplete="off">
+        </label>
+        <div class="buttons">
+          <button class="btn-register" id="register-btn">
+            <ion-icon name="log-in-outline"></ion-icon>
+          </button>
+          <a href="/register" class="hyper-link-other">
+            You don't haver an account? Register
+          </a>
+        </div>
+      </main>
+  </div>
+  <%- include('partials/scripts') %>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="/resources/js/login-actions.js"></script>
+</body>
+
+</html>
