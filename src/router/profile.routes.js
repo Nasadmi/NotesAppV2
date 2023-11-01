@@ -24,4 +24,15 @@ router.get('/dashboard', ensureAuthenticated, (req, res, next) => {
   })
 })
 
+router.get('/dashboard/settings', ensureAuthenticated, (req, res, next) => {
+  res.render('settings', {
+    user: {
+      username: req.user.username,
+      email: req.user.email
+    },
+    title: 'NotesApp',
+    theme: req.cookies.theme
+  })
+})
+
 export { router as profileRoutes }

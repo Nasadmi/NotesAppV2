@@ -9,6 +9,7 @@
   </title>
   <%- include('partials/head') %>
     <link rel="stylesheet" href="/resources/css/dashboard.css">
+    <link rel="stylesheet" href="/resources/css/notes.css">
 </head>
 
 <body>
@@ -38,7 +39,7 @@
       </button>
     </div>
     <main class="notes-content">
-      <% if(notes.length <=0) { %>
+      <% if(notes.length <= 0) { %>
         <span></span>
         <h1 class="no-notes-title">You doesn't have notes</h1>
         <% } else { %>
@@ -62,8 +63,8 @@
                 </p>
                 <% } %>
             </article>
-            <% } %>
-              <% } %>
+          <% } %>
+        <% } %>
     </main>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
